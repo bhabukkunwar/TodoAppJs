@@ -13,11 +13,20 @@
     }
     .header {
       background-color: rgb(61, 61, 61);
-      color: rgb(18, 191, 235);
+      color: whitesmoke;
       margin-top: 0;
       text-align: center;
     }
-    .form {
+    .message {
+      list-style: none;
+    }
+    .btn {
+      color: red;
+    }
+    .input {
+      width: 300px;
+    }
+    .formDiv {
       display: flex;
       justify-content: center;
     }
@@ -25,9 +34,9 @@
   <body>
     <div class="app">
       <h1 class="header">To Do App</h1>
-      <div class="form">
-        <form action="">
-          <input type="text" id="task" />
+      <div class="formDiv">
+        <form class="form" action="">
+          <input class="input" type="text" id="task" />
           <button type="submit" id="submit">Add</button>
         </form>
       </div>
