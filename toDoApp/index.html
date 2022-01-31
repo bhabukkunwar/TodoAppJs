@@ -10,10 +10,12 @@
     body {
       margin: 0 !important;
       padding: 0 !important;
+      background-color: #fafbfd;
+      font-family: OCR A Std, monospace;
+      color: #606c76;
     }
     .header {
-      background-color: rgb(61, 61, 61);
-      color: whitesmoke;
+      color: #606c76;
       margin-top: 0;
       text-align: center;
     }
@@ -24,19 +26,43 @@
       color: red;
     }
     .input {
+      color: #606c76;
+      height: 20px;
       width: 300px;
+      background-color: #fafbfd;
+      border-radius: 5px;
     }
     .formDiv {
       display: flex;
       justify-content: center;
     }
+    .list {
+      cursor: pointer;
+      list-style-type: '◻';
+      padding-left: 1rem;
+    }
+    .list ::marker {
+      margin: 0;
+    }
+    .colorchange {
+      color: teal;
+    }
+    .ul {
+      display: flex;
+      justify-content: left;
+    }
   </style>
   <body>
     <div class="app">
-      <h1 class="header">To Do App</h1>
+      <h1 class="header">To-Do List</h1>
       <div class="formDiv">
         <form class="form" action="">
-          <input class="input" type="text" id="task" />
+          <input
+            class="input"
+            type="text"
+            id="task"
+            placeholder="Please Enter A Task"
+          />
           <button type="submit" id="submit">Add</button>
         </form>
       </div>
