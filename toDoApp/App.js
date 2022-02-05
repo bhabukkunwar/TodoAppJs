@@ -4,45 +4,64 @@ const submit = document.getElementById('submit')
 
 const form = document.querySelector('form')
 
-const appDiv = document.querySelector('appDiv')
-
-// // creating message to show the status of tasks
-// // const message = document.createElement('li')
-// // const messageText = document.createTextNode('No Tasks Yet!')
-// // message.append(messageText)
-// // message.classList.add('message')
-// // message.style.marginTop = '5rem'
-// // message.style.color = '5rem'
-
-// form.appendChild(message)
+const date = document.getElementById('date')
 
 submit.addEventListener('click', function (e) {
-  e.preventDefault()
+  e.preventDefault() //default work refreshes web , to prevent default
 
   addTask(task)
 })
 
 function addTask(task) {
-  // form.removeChild(message)
-  // creating elements dynamically
-  const ulist = document.createElement('ul')
-  const list = document.createElement('li')
-  const text = document.createTextNode(task.value)
+  if (task.value.length == 0) {
+    alert('Please enter a valid task')
+  } else {
+    // creating elements dynamically
+    const ulist = document.createElement('ul')
+    const list = document.createElement('li')
+    const text = document.createTextNode(task.value) //taking sting values of task inpout element and assigning to text.
+    const deletebtn = document.createElement('button')
 
-  list.classList.add('list')
-  ulist.classList.add('ul')
+    const dateValue = document.createTextNode(date.value)
 
-  list.append(text)
-  ulist.append(list)
-  form.append(ulist)
+    // setting up delete button
+    deletebtn.textContent = 'Delete'
+    deletebtn.addEventListener('click', function (e) {
+      e.preventDefault()
+      ulist.remove(list)
+    })
 
-  // changging the color of taks when on mouse hover
-  list.addEventListener('mouseover', function (e) {
-    e.preventDefault()
-    list.classList.add('colorchange')
-  })
-  list.addEventListener('mouseout', function (e) {
-    e.preventDefault()
-    list.classList.remove('colorchange')
-  })
+    //assigning classes dynamically
+    list.classList.add('list')
+    ulist.classList.add('ul')
+    deletebtn.classList.add('delete')
+
+    list.append(text)
+
+    ulist.append(list)
+    ulist.append(dateValue)
+    ulist.append(deletebtn)
+    // ulist.appendChild(deletebtn)
+    document.body.append(ulist)
+
+    // clearing input field
+    task.value = ''
+
+    // changging the color of taks when on mouse hover
+    list.addEventListener('mouseover', function (e) {
+      e.preventDefault()
+      list.classList.add('colorchange')
+    })
+    list.addEventListener('mouseout', function (e) {
+      e.preventDefault()
+      list.classList.remove('colorchange')
+    })
+
+    // Tasks event listeners
+    list.addEventListener('click', function (e) {
+      e.preventDefault()
+      list.classList.remove('list')
+      list.classList.add('marker')
+    })
+  }
 }
